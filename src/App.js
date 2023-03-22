@@ -1,24 +1,30 @@
 import logo from './logo.svg';
+import { useEffect,useState } from 'react';
+import "./commonPages/FormInput.css";
+import { configureStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import './App.css';
-
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import NavBar from './commonPages/NavBar';
+import FormInputs from './commonPages/FormInputs';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mainpage">
+    
+    <NavBar/>
+    <div className="registration " style={{padding : '10px' }}>
+    
+    <FormInputs/>
     </div>
+    </div>
+    // <BrowserRouter>
+    // <Routes>
+      
+    //   <Route path="/" element={}/>
+    //   <Route path="/login" element={}/>
+    //   <Route path="/signup" element={}/>
+    // </Routes>
+    // </BrowserRouter>
   );
 }
 

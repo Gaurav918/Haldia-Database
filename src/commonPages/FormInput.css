@@ -1,0 +1,123 @@
+.registration {
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    min-width: 50px;
+    content: 'width=device-width, initial-scale=1.0';
+  }
+ 
+.mainpage {
+    background-color: #D3D3D3;  
+    position:fixed;
+    padding: 1px;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    /* background:rgba(255,255,255,0.5); */
+}
+.new-registration__control {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .new-registration__control label {
+    font-weight: bold;
+    margin-bottom: 0rem;
+    width: 25vh;
+    display: block;
+  }
+  
+  .new-registration__control input {
+    font: inherit;
+    padding: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 12rem;
+    height: 4vh;
+    max-width: 100%;
+  }
+  /* input[type=radio]{
+    gap: 0.1rem;
+    width:3rem;
+    height: 2vh;
+    max-width: 10%;
+    
+  } */
+  .radio-button {
+    width: 1rem;
+    margin-bottom: 0.1rem;
+    padding-bottom: 1rem;
+    column-width: 1rem;
+    text-align: center;
+    display: flex;
+  }
+  .radio-label {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  .new-upload__control input[type=file] {
+    font: inherit;
+    padding: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 25vh;
+    max-width: 100%;
+  }
+  
+  .new-registration__actions input[type=button]{
+    
+    text-align: right;
+    background-color: #7a56fa;
+    width : 100%;
+    border: none;
+    /* color: #fff; */
+    padding: 15px 30px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  /* input[type=button] {
+    background-color: #62529c;
+    width : 100%;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  } */
+  
+  @media (min-width: 375px) {
+    .new-registration__control {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+  
+    .expense-item__description h2 {
+      font-size: 1.25rem;
+    }
+  
+    .new-registration__control input {
+      font-size: 1.25rem;
+      padding: 0.5rem 1.5rem;
+      
+    
+    }
+  }
