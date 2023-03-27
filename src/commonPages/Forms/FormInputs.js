@@ -1,75 +1,29 @@
 import Form from 'react-bootstrap/Form';
+import {useSelector,useDispatch} from 'react-redux';
 import { useState } from 'react';
 import "./FormInput.css";
-import RegistrationProgressBar from './RegistrationProgressBar';
+import RegistrationProgressBar from '../RegProgBar/RegistrationProgressBar';
 const FormInputs
-=(props)=>{
-  const [married,setMarried] =useState(false);
-  const [enteredTitle,setEnteredTitle]=useState('');
-  const [enteredAmount,setEnteredAmount]=useState('');
-  const [enteredDate,setEnteredDate]=useState('');
-  const [enteredTime,setEnteredTime]=useState('');
-  //alternative to above using multiple useStates
-  //const [userInput,setUserInput]=useState({
-   //   enteredTitle: '',
-   //   enteredAmount: '',
-   //   enteredDate: ''
-  //});
-  
-      const titleChangeHandler =(event)=>{
-       setEnteredTitle(event.target.value);
-       //alternative to above code
-        //  setUserInput({
-         //     ...userInput,//here spread operator pulls the pervous values of the states
-         //     enteredTitle: event.target.value,//the element which we want to update
-         // });
-          //alternative to above code as state is renderd not at same time by react so above case might
-          //fail some times if there is a lot changes at a moment then previous state reference might point wrongly
-          //so in below code react keeps the track of the changes made so ommits the above chance of error 
-        //  setUserInput((prevstate)=>{return {...prevstate,enteredTitle:event.target.value};})
-          //console.log(event.target.value);
-      }
-      const initiatedNameHandler =(event)=>{}
-      const middlenameHandler=(event)=>
-      {}
-      const amountChangeHandler =(event)=>{
-          setEnteredAmount(event.target.value);
-         // setUserInput({
-         //     ...userInput,
-         //     enteredAmount: event.target.value,
-        //  });
-         // console.log(event.target.value);
-      }
-      const dateChangeHandler =(event)=>{
-          setEnteredDate(event.target.value);
-       //   setUserInput({
-        //      ...userInput,
-        //      enteredDate: event.target.value,
-        //  });
-          
-      }
-      const submitHandler=(event)=>{
-          event.preventDefault();
-      
-      const expenseData={
-          title: enteredTitle,
-          amount: +enteredAmount,
-          date: new Date(enteredDate)
-      }
-      props.onSaveExpenseData(expenseData);
-      setEnteredTitle('');
-      setEnteredAmount('');
-      setEnteredDate('');
+=()=>{
+  const dispatch = useDispatch();
+  const { firstName, middleName, lastName, initiatedName } = useSelector(state => state);
+
+  const inputHandler=(e)=>{
+    const { value, id } = e.target;
+    dispatch({ type: id, data: value })
   }
-      const cancelAddition=()=>{
-          props.onCancel(0);
-      }
-  const marritalStatus=()=>{
-    if(married)
-    {setMarried(false);}
-    else 
-    {setMarried(true);}
+
+  const saveDataHandler=(e)=>{
+    const { value, id } = e.target;
+    console.log("id: ", id, "data: ", value);
   }
+     
+  // const marritalStatus=()=>{
+  //   if(married)
+  //   {setMarried(false);}
+  //   else 
+  //   {setMarried(true);}
+  // }
 
   const jsxForMarried=<><Form.Label htmlFor="spouseName">Spouse Name</Form.Label>
   <Form.Control
@@ -89,7 +43,7 @@ const FormInputs
     <div>
     <RegistrationProgressBar style={{width:'100%'}} value={100/6} />
     </div>
-    <form onSubmit={submitHandler} >
+    <form onSubmit={()=>{}} >
         <div className="new-registration__controls">
           <h3>Personal Information</h3>
           <table>
@@ -99,17 +53,26 @@ const FormInputs
              <label >Name*</label></div></td>
               <td>
             <div className="new-registration__control">
-             <input type='text' placeholder='first name' ></input>
+             <input id='fname' type='text' placeholder='first name' value={firstName} onChange={(e) => {
+             inputHandler(e);
+              saveDataHandler(e)
+             }} />
             </div>
             </td>
             <td>
             <div className="new-registration__control">
-             <input type='text'  placeholder='middle name'></input>
+             <input id='mname'type='text'  placeholder='middle name' value={middleName}onChange={(e) => {
+              inputHandler(e);
+              saveDataHandler(e)
+             }}/>
             </div>
             </td>
             <td>
             <div className="new-registration__control">
-             <input type='text'  placeholder='last name'></input>
+             <input id='lname'type='text'  placeholder='last name' value={lastName}onChange={(e) => {
+              inputHandler(e);
+              saveDataHandler(e)
+             }}/>
             </div>
             </td>
             </tr>
@@ -118,7 +81,10 @@ const FormInputs
               <td>
             <div className="new-registration__control">
              <label>Initiated Name if any</label>
-             <input type='text'  value='' onChange={initiatedNameHandler}></input>
+             <input id='iname' type='text' value={initiatedName} onChange={(e) => {
+              inputHandler(e);
+              saveDataHandler(e)
+             }}/>
             </div>
             </td>
             </tr>
@@ -130,19 +96,19 @@ const FormInputs
               <td>
             <div className="new-registration__control">
             <label>Original*</label>                          
-             <input type='date' min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandler}></input>
+             <input type='date' min="2019-01-01" max="2022-12-31"  onChange={()=>{}} />
             </div>
             </td>   
             <td>
             <div className="new-registration__control">
             <label>time of Birth*</label>
-             <input type='time'  value={enteredTime} onChange={dateChangeHandler}></input>
+             <input type='time'   onChange={()=>{}}></input>
             </div>
             </td>  
             <td>
             <div className="new-registration__control">
             <label>Certificate*</label>                          
-             <input type='date' min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandler}></input>
+             <input type='date' min="2019-01-01" max="2022-12-31"  onChange={()=>{}}></input>
             </div>
             </td>   
             
@@ -230,7 +196,7 @@ const FormInputs
             </td>
             <td>
             <div className="new-registration__actions">
-             <button type="button"  >Save & Proceed</button>
+             <button type="button" onClick={saveDataHandler} >Save & Proceed</button>
             </div>
             </td>
             </tr>
@@ -258,7 +224,5 @@ const FormInputs
     </>
   );
 }
-
-
 
 export default FormInputs;

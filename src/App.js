@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import { useEffect,useState } from 'react';
-import "./commonPages/FormInput.css";
+import "./commonPages/Forms/FormInput.css";
 import { configureStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import NavBar from './commonPages/NavBar';
-import FormInputs from './commonPages/FormInputs';
+import FormInputs from './commonPages/Forms/FormInputs';
 function App() {
   return (
     <div className="mainpage">
