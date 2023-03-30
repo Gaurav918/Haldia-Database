@@ -1,9 +1,10 @@
 import {legacy_createStore as createStore} from 'redux';
-const form1Reducer=(state={firstName:"",
+const personalDetails={firstName:"",
 lastName:"",
 middleName:"",
 initiatedName:"",
-dob:""},action)=>{
+dob:""}
+const form1Reducer=(state={personalDetails},action)=>{
     // console.log("actions==>", action)
     switch (action.type) {
         case 'fname':
@@ -45,7 +46,11 @@ dob:""},action)=>{
         default:
             return state;
     }
-    
+    const personalDetails={personalNo:"",
+AlternateNo:"",
+Email:"",
+currentAdrs:"",
+permanentAdrs:""}
 }
 const store=createStore(form1Reducer);
 

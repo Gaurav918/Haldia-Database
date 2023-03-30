@@ -12,18 +12,19 @@
  
 .mainpage {
     background-color: #D3D3D3;  
-    position:fixed;
+    position:relative;
     padding: 1px;
     margin:0;
 
     top:0;
     left:0;
 
-    width: 100%;
-    height: 100%;
+     width: 100%;
+    height: 100%; 
     /* background:rgba(255,255,255,0.5); */
 }
-.new-registration__control {
+
+/* .new-registration__control {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
@@ -38,7 +39,7 @@
     display: block;
   }
   
-  .new-registration__control input {
+  .inputs {
     font: inherit;
     padding: 0.3rem;
     border-radius: 6px;
@@ -46,7 +47,7 @@
     width: 12rem;
     height: 4vh;
     max-width: 100%;
-  }
+  } */
   /* input[type=radio]{
     gap: 0.1rem;
     width:3rem;
@@ -75,22 +76,24 @@
     width: 25vh;
     max-width: 100%;
   }
-  
-  .new-registration__actions input[type=button]{
+  .container{
+    font-family: Georgia, serif;
+    image-rendering: auto;
+  }
+.img{
+  width:20px;
+  height: 40px;
+}
+  /* .new-registration__actions button{
     
     text-align: right;
     background-color: #7a56fa;
     width : 100%;
     border: none;
-    /* color: #fff; */
-    padding: 15px 30px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
+   
     
-  }
-  /* input[type=button] {
+  } */
+   .button_align {
     background-color: #62529c;
     width : 100%;
     border: none;
@@ -100,7 +103,8 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-  } */
+    
+  }
   
   @media (min-width: 375px) {
     .new-registration__control {
@@ -121,3 +125,4 @@
     
     }
   }
+  

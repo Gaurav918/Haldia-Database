@@ -1,22 +1,29 @@
 import logo from './logo.svg';
-import { useEffect,useState } from 'react';
 import "./commonPages/Forms/FormInput.css";
-import { configureStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import NavBar from './commonPages/NavBar';
-import FormInputs from './commonPages/Forms/FormInputs';
+import FormsContainer from './commonPages/Forms/FormsContainer';
+import { useState } from 'react';
+
 function App() {
+  const [stage,setStage]=useState(1);
+  const jsxFormInputs=<></>;
+ 
   return (
     <div className="mainpage">
     
     <NavBar/>
-    <div className="registration " style={{padding : '10px' }}>
     
-    <FormInputs/>
+    <FormsContainer/>
+    {/* <FormInputs/>
     </div>
+    <div className="registration " style={{padding : '10px' }}>
+    <FIStagetwo/> */}
+    
     </div>
+    
     // <BrowserRouter>
     // <Routes>
       
