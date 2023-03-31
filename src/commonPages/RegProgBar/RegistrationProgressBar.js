@@ -1,5 +1,6 @@
 import { useReducer,useEffect } from 'react';
 import './RegistrationProgressBar.css';
+import 'bootstrap/dist/css/bootstrap.css';
 const lables={label1:'active',label2:'',label3:'',label4:'',label5:'',lable6:''}
 
 const stageReducer=(state,action)=>{
@@ -47,6 +48,8 @@ const stageReducer=(state,action)=>{
   }
   
 }
+
+
 function RegistrationProgressBar(props) {
   
   
@@ -79,8 +82,20 @@ function RegistrationProgressBar(props) {
       dispatch({type:1})
   }
 },[props.stage]);
+const stagevals=[{id:'1',val:'Personal Detail',labelsd:label.label1},{id:'2',val:'Contact Detail',labelsd:label.label2},{id:'3',val:'Devotional Info.',labelsd:label.label3},
+{id:'4',val:'Devotional Detail',labelsd:label.label4},{id:'5',val:'Professional Info',labelsd:label.label5},{id:'6',val:'Family Detail',labelsd:label.label6}];
   return (<>
+  <div className='container'>
+  <div className='form-col'>
   <div className="stepper-wrapper">
+    {stagevals.map((e)=> 
+  <div className={`stepper-item  ${e.labelsd} `}>
+    <div className="step-counter">{e.id}</div>
+    <div className="step-name">{e.val}</div>
+  
+  </div>)}
+  </div>
+  {/* <div className="stepper-wrapper">
   <div className={`stepper-item  ${label.label1} `}>
     <div className="step-counter">1</div>
     <div className="step-name">Personal Details</div>
@@ -95,7 +110,7 @@ function RegistrationProgressBar(props) {
   </div>
   <div className={`stepper-item  ${label.label4} `}>
     <div className="step-counter">4</div>
-    <div className="step-name">Add Dev Info</div>
+    <div className="step-name">Devotional Detail</div>
   </div>
   <div className={`stepper-item  ${label.label5} `}>
     <div className="step-counter">5</div>
@@ -104,7 +119,8 @@ function RegistrationProgressBar(props) {
   <div className={`stepper-item  ${label.label6} `}>
     <div className="step-counter">6</div>
     <div className="step-name">Family Details</div>
-  </div>
+  </div> */}
+</div>
 </div>
 </>);
 }

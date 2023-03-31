@@ -1,6 +1,6 @@
 
 import {useSelector,useDispatch} from 'react-redux';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import "./FormInput.css";
 
 const ContactInfoForm
@@ -22,109 +22,100 @@ const ContactInfoForm
 
     return(
     <>
-    
+    <h3>Contact Details</h3>
     <form onSubmit={()=>{}} >
-        <div className="new-registration__controls">
-          <h3>Contact Details</h3>
-          <table>
-            <tbody >
-            <tr>
-              <td ><div className="new-registration__control">
-             <label >Phone No.*</label></div></td>
-              <td>
-            <div className="new-registration__control">
-             <input id='pno' type='number' placeholder='xxxxx xxxxx' maxLength={10}  onChange={(e) => {
+    <div className='container'>
+          <div className="form-group row">
+          <div className='form-col col-md-3'>
+             <label>Phone No.*</label>
+              </div>
+              <div className='form-col col-md-4'>
+             <input id='pno' type='number' className='form-control' placeholder='Always Reachable' maxLength={10}  onChange={(e) => {
              inputHandler(e);
               saveDataHandler(e)
              }} />
             </div>
-            </td>
-            </tr>
-            <tr>
-              <td ><div className="new-registration__control">
-             <label >Alternate No.*</label></div></td>
-              <td>
-            <div className="new-registration__control">
-             <input id='Altno' type='number' placeholder='xxxxx xxxxx' maxLength={10} onChange={(e) => {
+            <div className='form-col col-md-4'>
+             <input id='Altno' className='form-control' type='number' placeholder='Alternate No.' maxLength={10} onChange={(e) => {
              inputHandler(e);
               saveDataHandler(e)
              }} />
             </div>
-            </td>
-            </tr>
-            
-            <tr>
-              <td ><div className="new-registration__control">
-             <label>Email Address*</label></div></td>
-              <td>
-            <div className="new-registration__control">
-             <input type='email' placeholder='xyz@gmail.com' ></input>
+            <div className="form-group row">
+          <div className='form-col col-md-3'>
+             <label>Email Address*</label>
+             </div>
+             <div className='form-col col-md-4'>
+             <input className='form-control'type='email' placeholder='xyz@gmail.com' />
             </div>
-            </td>
-            
-            </tr>
-            <tr>
-              
-            <td><div className="new-registration__control">
+            </div>
+            <div className="form-group row">
+          <div className='form-col col-md-3'>
                <label> Current Address<a>*</a></label>
                 </div>
-                </td>
-                <td>
-                  <input type='text' style={{width:'400px'}}id='currAdd'/>
-                </td>
-            </tr>
-            <tr>
-             <td></td>
-             <td><input type='text' style={{width:'400px'}}id=''/></td>
-            </tr>
-            <tr>
-            
-              <td></td>
-              <td><div className="new-registration__control"><input type='text' id='currAdd' placeholder='city'/></div></td>
-              
-              <td><div className="new-registration__control"><input type='text' id='' placeholder='State'/></div></td>
-
-            </tr>
-            <tr>
-            
-            <td></td>
-            <td><div className="new-registration__control"><input type='text' id='currAdd' placeholder='ZipCode'/></div></td>
-            
-            <td><div className="new-registration__control"><input type='text' id='' placeholder='Country'/></div></td>
-
-          </tr>
-          <tr>
-              
-            <td><div className="new-registration__control">
-               <label> Permanent Address<a>*</a></label>
+                
+                <div className='form-col col-md-3'>
+                  <input type='text' className='form-control' style={{width:'400px'}}id='currAdd'/>
                 </div>
-                </td>
-                <td>
-                  <input type='text' style={{width:'400px'}}id='currAdd'/>
-                </td>
-            </tr>
-            <tr>
-             <td></td>
-             <td><input type='text' style={{width:'400px'}}id=''/></td>
-            </tr>
-            <tr>
-            
-              <td></td>
-              <td><div className="new-registration__control"><input type='text' id='currAdd' placeholder='city'/></div></td>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'>
+             <input type='text' className='form-control' style={{width:'400px'}}id=''/>
+            </div>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'>
+            <input type='text' className='form-control' id='currAdd' placeholder='city'/>
+          </div>
               
-              <td><div className="new-registration__control"><input type='text' id='' placeholder='State'/></div></td>
-
-            </tr>
-            <tr>
+          <div className='form-col col-md-3'>
+            <input type='text' className='form-control' id='' placeholder='State'/>
+            </div>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'><input type='text' className='form-control' id='currAdd' placeholder='ZipCode'/>
+          </div>
             
-            <td></td>
-            <td><div className="new-registration__control"><input type='text' id='currAdd' placeholder='ZipCode'/></div></td>
+          <div className='form-col col-md-3'><input className='form-control' type='text' id='' placeholder='Country'/>
+          </div>
+          </div>
+          <div className="form-group row">
+          <div className='form-col col-md-3'>
+               <label> Current Address<a>*</a></label>
+                </div>
+                
+                <div className='form-col col-md-3'>
+                  <input type='text' className='form-control' style={{width:'400px'}}id='currAdd'/>
+                </div>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'>
+             <input type='text' className='form-control' style={{width:'400px'}}id=''/>
+            </div>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'>
+            <input type='text' className='form-control' id='currAdd' placeholder='city'/>
+          </div>
+              
+          <div className='form-col col-md-3'>
+            <input type='text' className='form-control' id='' placeholder='State'/>
+            </div>
+            </div>
+            <div className="form-group row">
+            <div className='form-col col-md-3'></div>
+          <div className='form-col col-md-3'><input type='text' className='form-control' id='currAdd' placeholder='ZipCode'/>
+          </div>
             
-            <td><div className="new-registration__control"><input type='text' id='' placeholder='Country'/></div></td>
-
-          </tr>
-            </tbody>
-            </table>
+          <div className='form-col col-md-3'><input className='form-control' type='text' id='' placeholder='Country'/>
+          </div>
+          </div>          
+        </div>
         </div>
         </form>
       

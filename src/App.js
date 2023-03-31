@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import "./commonPages/Forms/FormInput.css";
-
+import 'bootstrap'
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import NavBar from './commonPages/NavBar';
@@ -12,15 +12,10 @@ function App() {
   const jsxFormInputs=<></>;
  
   return (
-    <div className="mainpage">
-    
+    <div className="body mainpage">
     <NavBar/>
     
     <FormsContainer/>
-    {/* <FormInputs/>
-    </div>
-    <div className="registration " style={{padding : '10px' }}>
-    <FIStagetwo/> */}
     
     </div>
     

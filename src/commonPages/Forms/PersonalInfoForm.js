@@ -17,16 +17,16 @@ const PersonalInfoForm
     console.log("id: ", id, "data: ", value);
   }
      const languages=['Hindi','English','Bengali','Marathi','Gujrati','Oriya','Tamil','Telgu','Marwari','Punjabi','Nepali','Bhojpuri'];
-     const ashrama=[{id:1,value:'Brahmachari',col:3},{id:2,value:'Grihasta',col:2},{id:3,value:'Vanprastha',col:2},{id:4,value:'Sannyasi',col:2}];
+     const ashrama=[{id:1,value:'Brahmachari',col:3},{id:2,value:'Grihasta',col:2},{id:3,value:'Vanprastha',col:3},{id:4,value:'Sannyasi',col:2}];
      const bloodGroup=['A +ve','A -ve','B +ve','B -ve','AB +ve','AB -ve','O +ve','O -ve']
     return(
     <>
-    <div className='container'>
+    
     <h3>Personal Information</h3>
     <form onSubmit={()=>{}} className="form-inline">
         
           
-          
+    <div className='container'>
           <div className="form-group row">
           <div className='form-col col-md-3'>
              <label >Name*</label>
@@ -86,7 +86,7 @@ const PersonalInfoForm
             </div>
             <div className="form-group row">
             <div className='form-col form-check col-md-3'>
-               <label > Ashrama*</label>
+               <label >Ashrama*</label>
                 </div>
                 {ashrama.map((e)=><div className={`form-col col-md-${e.col}`}>
                   <label className="form-check-label">
@@ -124,8 +124,9 @@ const PersonalInfoForm
               <input type="file" className='form-file' accept="image/*"  />
               </div>
               </div>       
+              </div>
         </form>
-        </div>
+        
     </>
   );
 }
