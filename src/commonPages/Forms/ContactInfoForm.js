@@ -84,7 +84,7 @@ const ContactInfoForm
           </div>
           <div className="form-group row">
           <div className='form-col col-md-3'>
-               <label> Current Address<a>*</a></label>
+               <label> Permanent Address<a style={{color:'red'}}>*</a></label>
                 </div>
                 
                 <div className='form-col col-md-3'>

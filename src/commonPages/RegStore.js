@@ -1,5 +1,5 @@
 import {legacy_createStore as createStore} from 'redux';
-const personalDetails={firstName:"",
+const personalDetails={firstName:"saurav",
 lastName:"",
 middleName:"",
 initiatedName:"",
