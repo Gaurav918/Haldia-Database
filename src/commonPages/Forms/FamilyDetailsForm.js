@@ -2,7 +2,7 @@ const FamilyDetails = () => {
   const religion = ["Hindu","Jain","Sikh","Cristian","Muslim","Buddhist"];
   return (
     <>
-      <h2>Professional Information</h2>
+      <h2>Family Details</h2>
       <div className="container">
         <div className="form-group row">
           <div className="form-col col-md-3">
@@ -126,6 +126,31 @@ const FamilyDetails = () => {
               />
             </div>
             </div>
+            <div className="form-group row">
+          <div className="form-col col-md-3">
+            <label>
+              Mother Tongue<a style={{ color: "red" }}>*</a>
+            </label>
+          </div>
+          <div className="form-col col-md-3">
+            <select className="form-select">
+              {religion.map((e) => (
+                <option value={e} label={e} />
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="form-col form-check col-md-3">
+            <label>Children</label>
+          </div>
+          <div className={`form-col col-md-3`}>
+          <label className="sm" style={{ fontSize: "10px", color: "green" }}>
+            <textarea className="form-control" placeholder={"1.\n2.\n3.\n4."} />
+            * leave empty if not applicable
+            </label>
+          </div>
+        </div>
       </div>
     </>
   );
