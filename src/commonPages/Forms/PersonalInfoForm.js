@@ -54,7 +54,7 @@ const PersonalInfoForm = (props) => {
         <div className="container">
           <div className="form-group row">
             <div className="form-col col-md-3">
-              <label>Name*</label>
+              <label>Name<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
               <input
@@ -112,10 +112,10 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3 ">
-              <label> Date of Birth*</label>
+              <label> Date of Birth<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3 ">
-              <label>Original*</label>
+              <label>Original<a style={{color:'red'}}>*</a></label>
               <input
                 type="datetime-local"
                 className="form-control"
@@ -125,7 +125,7 @@ const PersonalInfoForm = (props) => {
               />
             </div>
             <div className="form-col col-md-3">
-              <label>Certificate*</label>
+              <label>Certificate<a style={{color:'red'}}>*</a></label>
               <input
                 type="datetime-local"
                 className="form-control"
@@ -137,7 +137,7 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3">
-              <label>Ancestors Info.</label>
+              <label>Ancestors Info.<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
               <input
@@ -163,7 +163,7 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col form-check col-md-3">
-              <label>Ashrama*</label>
+              <label>Ashrama<a style={{color:'red'}}>*</a></label>
             </div>
             {ashrama.map((e) => (
               <div className={`form-col col-md-${e.col}`}>
@@ -176,7 +176,7 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3">
-              <label>Blood Group*</label>
+              <label>Blood Group<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
               <select className="form-select">
@@ -188,7 +188,7 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3">
-              <label>languages Known*</label>
+              <label>languages Known<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
               <select className="form-select">
@@ -200,7 +200,7 @@ const PersonalInfoForm = (props) => {
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3">
-              <label className="form-label">Upload Profile Picture*</label>
+              <label className="form-label">Upload Profile Picture<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
               <input type="file" className="form-file" accept="image/*" />

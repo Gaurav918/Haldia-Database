@@ -11,7 +11,7 @@ const AddDevotionalInfoForm = () => {
         <h2> Devotional Detail</h2>
         <div className="form-group row">
           <div className="form-col form-check col-md-3">
-            <label>No. Of Rounds Chanting*</label>
+            <label>No. Of Rounds Chanting<a style={{color:'red'}}>*</a></label>
           </div>
           <div className={`form-col col-md-3`}>
             <input type="text" className="form-control" />
@@ -19,7 +19,7 @@ const AddDevotionalInfoForm = () => {
         </div>
         <div className="form-group row">
           <div className="form-col form-check col-md-3">
-            <label>Chanting Since*</label>
+            <label>Chanting Since<a style={{color:'red'}}>*</a></label>
           </div>
           <div className={`form-col col-md-3`}>
             <input type="month" className="form-control" />
@@ -38,12 +38,12 @@ const AddDevotionalInfoForm = () => {
         </div>
         <div className="form-group row">
           <div className="form-col form-check col-md-3">
-            <label>Introduced By*</label>
+            <label>Introduced By<a style={{color:'red'}}>*</a></label>
           </div>
         </div>
         <div className="form-group row">
           <div className="form-col form-check col-md-3">
-            <label>Year of Introduction*</label>
+            <label>Year of Introduction<a style={{color:'red'}}>*</a></label>
           </div>
           <div className={`form-date col-md-3`}>
             <DatePicker
@@ -58,7 +58,7 @@ const AddDevotionalInfoForm = () => {
         </div>
         <div className="form-group row">
           <div className="form-col form-check col-md-3">
-            <label>Introduced through*</label>
+            <label>Introduced through<a style={{color:'red'}}>*</a></label>
           </div>
           <div className={`form-col col-md-3`}>
             <label className="sm" style={{ fontSize: "10px", color: "green" }}>
