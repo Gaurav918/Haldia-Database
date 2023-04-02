@@ -1,5 +1,25 @@
 const FamilyDetails = () => {
-  const religion = ["Hindu","Jain","Sikh","Cristian","Muslim","Buddhist"];
+  const religion = ["Hindu", "Jain", "Sikh", "Cristian", "Muslim", "Buddhist"];
+  const motherTongue = [
+    "Hindi",
+    "Bhojpuri",
+    "Bengali",
+    "Oriya",
+    "Gujrati",
+    "Marwari",
+    "Punjabi",
+    "Tamil",
+    "Telgu",
+    "Kannad",
+    "Malyalam",
+    "Nepali",
+    "Assamese",
+    "English",
+    "Chinese",
+    "Japanese",
+    "German",
+    "French",
+  ];
   return (
     <>
       <h2>Family Details</h2>
@@ -20,7 +40,9 @@ const FamilyDetails = () => {
         </div>
         <div className="form-group row">
           <div className="form-col col-md-3">
-            <label>Father's Name<a style={{color:'red'}}>*</a></label>
+            <label>
+              Father's Name<a style={{ color: "red" }}>*</a>
+            </label>
           </div>
           <div className="form-col col-md-3">
             <input
@@ -52,7 +74,9 @@ const FamilyDetails = () => {
         </div>
         <div className="form-group row">
           <div className="form-col col-md-3">
-            <label>Mother's Name<a style={{color:'red'}}>*</a></label>
+            <label>
+              Mother's Name<a style={{ color: "red" }}>*</a>
+            </label>
           </div>
           <div className="form-col col-md-3">
             <input
@@ -84,7 +108,9 @@ const FamilyDetails = () => {
         </div>
         <div className="form-group row">
           <div className="form-col col-md-3">
-            <label>Spouse Name<a style={{color:'red'}}>*</a></label>
+            <label>
+              Spouse Name<a style={{ color: "red" }}>*</a>
+            </label>
           </div>
           <div className="form-col col-md-3">
             <input
@@ -115,18 +141,17 @@ const FamilyDetails = () => {
           </div>
         </div>
         <div className="form-group row">
-            <div className="form-col col-md-3 ">
-              <label> Date of Marriage<a style={{color:'red'}}>*</a></label>
-            </div>
-            <div className="form-col col-md-3 ">
-              <input
-                type="date"
-                className="form-control"
-                onChange={() => {}}
-              />
-            </div>
-            </div>
-            <div className="form-group row">
+          <div className="form-col col-md-3 ">
+            <label>
+              {" "}
+              Date of Marriage<a style={{ color: "red" }}>*</a>
+            </label>
+          </div>
+          <div className="form-col col-md-3 ">
+            <input type="date" className="form-control" onChange={() => {}} />
+          </div>
+        </div>
+        <div className="form-group row">
           <div className="form-col col-md-3">
             <label>
               Mother Tongue<a style={{ color: "red" }}>*</a>
@@ -134,7 +159,7 @@ const FamilyDetails = () => {
           </div>
           <div className="form-col col-md-3">
             <select className="form-select">
-              {religion.map((e) => (
+              {motherTongue.map((e) => (
                 <option value={e} label={e} />
               ))}
             </select>
@@ -145,9 +170,12 @@ const FamilyDetails = () => {
             <label>Children</label>
           </div>
           <div className={`form-col col-md-3`}>
-          <label className="sm" style={{ fontSize: "10px", color: "green" }}>
-            <textarea className="form-control" placeholder={"1.\n2.\n3.\n4."} />
-            * leave empty if not applicable
+            <label className="sm" style={{ fontSize: "10px", color: "green" }}>
+              <textarea
+                className="form-control"
+                placeholder={"1.\n2.\n3.\n4."}
+              />
+              * leave empty if not applicable
             </label>
           </div>
         </div>
