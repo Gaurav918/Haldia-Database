@@ -1,5 +1,5 @@
 const FamilyDetails = () => {
-  const religion = [];
+  const religion = ["Hindu","Jain","Sikh","Cristian","Muslim","Buddhist"];
   return (
     <>
       <h2>Professional Information</h2>
