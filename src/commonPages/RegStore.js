@@ -1,47 +1,35 @@
 import {legacy_createStore as createStore} from 'redux';
-const personalDetails={firstName:"saurav",
-lastName:"",
-middleName:"",
-initiatedName:"",
-dob:""}
-const form1Reducer=(state={personalDetails},action)=>{
+const defaultState = {
+    firstName:"",
+    lastName:"",
+    middleName:"",
+    initiatedName:"",
+    dob:""
+}
+const form1Reducer=(state=defaultState, action)=>{
     // console.log("actions==>", action)
     switch (action.type) {
         case 'fname':
            return {
-                firstName: action.data,
-                lastName: state.lastName,
-                middleName: state.middleName,
-                initiatedName:state.initiatedName,
-                dob:state.dob
+                ...state,
+                firstName: action.data
             }
             
             
         case 'mname':
                 return{
-                    firstName: state.firstName,
-                
-                middleName: action.data,
-                lastName: state.lastName,
-                initiatedName:state.initiatedName,
-                dob:state.dob
+                    ...state,
+                    middleName: action.data,
                 }
          case 'lname':
             return{
-                firstName: state.firstName,
-                
-                middleName: state.middleName,
+                ...state,
                 lastName: action.data,
-                initiatedName:state.initiatedName,
-                dob:state.dob
             }
         case 'iname':
             return{
-                firstName: state.firstName,
-                lastName: state.lastName,
-                middleName: state.middleName,
+                ...state,
                 initiatedName:action.data,
-                dob:state.dob
             }
         default:
             return state;

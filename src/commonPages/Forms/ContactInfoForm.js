@@ -142,9 +142,9 @@ const ContactInfoForm = (props) => {
               </div>
 
               <div className="form-col col-md-3">
-              <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-  <label class="form-check-label" for="flexCheckChecked">
+              <div className="form-check">
+  <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+  <label className="form-check-label" for="flexCheckChecked">
     Same as current
   </label>
 </div>

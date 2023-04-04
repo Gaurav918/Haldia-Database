@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import "./FormInput.css";
+import { FormCheck } from "react-bootstrap";
+import { validateFname } from "../../RegexExpsValidation/RegexExps";
 const PersonalInfoForm = (props) => {
   const dispatch = useDispatch();
   const { firstName, middleName, lastName, initiatedName } = useSelector(
@@ -47,6 +49,9 @@ const PersonalInfoForm = (props) => {
     "O +ve",
     "O -ve",
   ];
+  const validate=()=>{
+    console.log(firstName.match(validateFname))
+  }
   return (
     <>
       <h3>Personal Information</h3>
@@ -66,7 +71,9 @@ const PersonalInfoForm = (props) => {
                 onChange={(e) => {
                   inputHandler(e);
                   saveDataHandler(e);
-                }}
+                }
+              }
+              onBlur={validate}
               />
             </div>
             <div className="form-col col-md-3">
@@ -166,7 +173,7 @@ const PersonalInfoForm = (props) => {
               <label>Ashrama<a style={{color:'red'}}>*</a></label>
             </div>
             {ashrama.map((e) => (
-              <div className={`form-col col-md-${e.col}`}>
+              <div className={`form-col col-md-${e.col}`} key={e.id}>
                 <label className="form-check-label">
                   <input type="radio" className="form-check-input" id={e.id} />
                   {e.value}
@@ -181,7 +188,7 @@ const PersonalInfoForm = (props) => {
             <div className="form-col col-md-3">
               <select className="form-select">
                 {bloodGroup.map((e) => (
-                  <option value={e} label={e} />
+                  <option value={e} label={e} key={e} />
                 ))}
               </select>
             </div>
@@ -193,7 +200,7 @@ const PersonalInfoForm = (props) => {
             <div className="form-col col-md-3">
               <select className="form-select">
                 {languages.map((e) => (
-                  <option value={e} label={e} />
+                  <option value={e} label={e} key={e} />
                 ))}
               </select>
             </div>

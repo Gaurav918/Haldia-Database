@@ -8,18 +8,92 @@ import AddDevotionalInfoForm from "./AddDevotionalInfoForm";
 import ProfessionalInfoForm from "./ProfessionalInfoForm";
 import FamilyDetails from "./FamilyDetailsForm";
 import image from "../../images/lordWithDevs.png";
+import SubmitSuccess from "../../SuccessHandler/SubmitSuccess";
+import ErrorMessage from "../../SuccessHandler/ErrorMessage";
 
 const FormsContainer = () => {
   const [stage, setStage] = useState(1);
   const [back, setBack] = useState(true);
   const [forward, setForward] = useState(false);
+  const [submit,setSubmit] = useState('Save & Proceed');
+ 
+const data={
+  "devId": null,
+  "fname": 'Krishna',
+  "mname": null,
+  "lname": null,
+  "initiatedName": null,
+  "gender": null,
+  "dob": "2022-02-23",
+  "maritialStatus": null,
+  "aspiringAshram": null,
+  "bloodGroup": null,
+  "language": null,
+  "profileImgUrl": null,
+  "primaryPhone": null,
+  "whatsappPhone": null,
+  "email": null,
+  "currentAddress": null,
+  "permanentAddress": null,
+  "centerConnectedTo": null,
+  "facilitator": null,
+  "counselor": null,
+  "spiritualMaster": null,
+  "chantingRounds": "16",
+  "yearChantingSince": null,
+  "yearChanting16Rounds": null,
+  "introducedBy": null,
+  "yearOfIntroduction": null,
+  "placeIntroducedIn": null,
+  "previousCounselor": null,
+  "preferredServices": null,
+  "servicesRendered": null,
+  "remarks": null,
+  "education": null,
+  "occupation": null,
+  "presentDesignation": null,
+  "awards": null,
+  "skills": null,
+  "currentCompany": null,
+  "officeAddress": null,
+  "previousReligion": null,
+  "birthCity": null,
+  "birthState": null,
+  "motherTongue": null,
+  "fathersName": null,
+  "mothersName": null,
+  "parent": false,
+  "modified": false,
+  "stayingInHaldiaVoice": false
+}
+
+const requestData = {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+};
+  
+  const [submitResponse,setSubmitResponse]=useState('');
+  const [error,setError]=useState('');
+   const submitHandler=()=>{
+    fetch('https://hlz-global-reg-boot.herokuapp.com/v1/hlzGlobalReg/saveInput/', requestData)
+    .then(response => response.json())
+    .then(data => {setSubmitResponse(data.fname);
+    setFormStage(<><SubmitSuccess/></>)
+    }).catch(e=>{setError('there is error in submitting the response',e);
+  setFormStage(<>
+  <ErrorMessage/>
+  </>)});
+
+    console.log(submitResponse);
+    console.log(error);
+  }
+  let forms={};
   const formStageHandler = (stage) => {
     switch (stage) {
       case 1:
         setFormStage(
-          <>
-            <PersonalInfoForm satge={stage} onStageChange={formStageHandler} />
-          </>
+          forms.stage1
         );
         setStage(1);
         setBack(true);
@@ -27,70 +101,62 @@ const FormsContainer = () => {
         break;
       case 2:
         setFormStage(
-          <>
-            <ContactInfoForm satge={stage} onStageChange={formStageHandler} />
-          </>
+         forms.stage2
         );
         setStage(2);
         setBack(false);
         break;
       case 3:
         setFormStage(
-          <>
-            <DevotionalInfoForm
-              satge={stage}
-              onStageChange={formStageHandler}
-            />
-          </>
+         forms.stage3
         );
         setStage(3);
         break;
       case 4:
         setFormStage(
-          <>
-            <AddDevotionalInfoForm
-              satge={stage}
-              onStageChange={formStageHandler}
-            />
-          </>
+          forms.stage4
         );
         setStage(4);
         break;
       case 5:
         setFormStage(
-          <>
-            <ProfessionalInfoForm
-              satge={stage}
-              onStageChange={formStageHandler}
-            />
-          </>
+          forms.stage5
         );
         setStage(5);
         break;
       case 6:
         setFormStage(
-          <>
-            <FamilyDetails satge={stage} onStageChange={formStageHandler} />
-          </>
+          forms.sage6
         );
         setStage(6);
-        setForward(false);
+        
+        setSubmit('Save & Proceed');
         break;
       case 7:
         setStage(7);
-        setForward(true);
+        
+        setSubmit('Submit');
         break;
+      case 8:
+         submitHandler();
+      break;
       default:
         setFormStage(
-          <>
-            <PersonalInfoForm satge={stage} onStageChange={formStageHandler} />
-          </>
+          forms.stage1
         );
+        
         setStage(1);
         setForward(false);
         setBack(true);
     }
+    
   };
+  forms={stage1: 
+    <PersonalInfoForm satge={stage} onStageChange={formStageHandler} />,stage2:<ContactInfoForm satge={stage} onStageChange={formStageHandler} />,
+    stage3:<DevotionalInfoForm satge={stage}onStageChange={formStageHandler}/>,stage4:<AddDevotionalInfoForm
+    satge={stage} onStageChange={formStageHandler}/>,stage5:<ProfessionalInfoForm satge={stage} onStageChange={formStageHandler}/>,
+    sage6:<FamilyDetails satge={stage} onStageChange={formStageHandler} />
+  }
   const [jsxFormStage, setFormStage] = useState(
     <>
       <PersonalInfoForm satge={stage} onStageChange={formStageHandler} />
@@ -127,7 +193,7 @@ const FormsContainer = () => {
           onClick={() => formStageHandler(stage + 1)}
           disabled={forward}
         >
-          Save & Proceed
+          {submit}
         </button>
       </div>
     </>

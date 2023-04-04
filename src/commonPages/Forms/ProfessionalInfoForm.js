@@ -17,7 +17,7 @@ const ProfessionalInfoForm = () => {
     { id: "2", val: "Employed part-time" },
     { id: "3", val: "Self-employed" },
     { id: "4", val: "Unemployed(Job Search/preparation)" },
-    { id: 5, val: "Unemployed (not looking for work)" },
+    { id: "5", val: "Unemployed (not looking for work)" },
     { id: "6", val: "Home Maker" },
   ];
   const [collapse, setCollapse] = useState("");
