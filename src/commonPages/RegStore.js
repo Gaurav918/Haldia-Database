@@ -1,12 +1,7 @@
 import {legacy_createStore as createStore} from 'redux';
-const defaultState = {
-    firstName:"",
-    lastName:"",
-    middleName:"",
-    initiatedName:"",
-    dob:""
-}
-const form1Reducer=(state=defaultState, action)=>{
+import { requiredDataAllFields } from '../utilities/AllFieldsData';
+
+const form1Reducer=(state=requiredDataAllFields, action)=>{
     // console.log("actions==>", action)
     switch (action.type) {
         case 'fname':
@@ -34,11 +29,7 @@ const form1Reducer=(state=defaultState, action)=>{
         default:
             return state;
     }
-    const personalDetails={personalNo:"",
-AlternateNo:"",
-Email:"",
-currentAdrs:"",
-permanentAdrs:""}
+    
 }
 const store=createStore(form1Reducer);
 

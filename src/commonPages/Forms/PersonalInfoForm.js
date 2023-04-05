@@ -4,58 +4,85 @@ import { useState } from "react";
 import "./FormInput.css";
 import { FormCheck } from "react-bootstrap";
 import { validateFname } from "../../RegexExpsValidation/RegexExps";
+import { languages,bloodGroup,ashrama } from "../../utilities/OptionalEntries";
+import { fnameError } from "../../utilities/ErrorMessages";
+
 const PersonalInfoForm = (props) => {
   const dispatch = useDispatch();
   const { firstName, middleName, lastName, initiatedName } = useSelector(
     (state) => state
   );
 
-  const inputHandler = (e) => {
-    const { value, id } = e.target;
-    dispatch({ type: id, data: value });
-  };
+  // const inputHandler = (e) => {
+  //   const { value, id } = e.target;
+  //   dispatch({ type: id, data: value });
+  // };
 
-  const saveDataHandler = (e) => {
-    const { value, id } = e.target;
-    console.log("id: ", id, "data: ", value);
-  };
-  const languages = [
-    "Hindi",
-    "English",
-    "Bengali",
-    "Marathi",
-    "Gujrati",
-    "Oriya",
-    "Tamil",
-    "Telgu",
-    "Marwari",
-    "Punjabi",
-    "Nepali",
-    "Bhojpuri",
-  ];
-  const ashrama = [
-    { id: 1, value: "Brahmachari", col: 3 },
-    { id: 2, value: "Grihasta", col: 2 },
-    { id: 3, value: "Vanprastha", col: 2 },
-    { id: 4, value: "Sannyasi", col: 2 },
-  ];
-  const bloodGroup = [
-    "A +ve",
-    "A -ve",
-    "B +ve",
-    "B -ve",
-    "AB +ve",
-    "AB -ve",
-    "O +ve",
-    "O -ve",
-  ];
-  const validate=()=>{
-    console.log(firstName.match(validateFname))
+  // const saveDataHandler = (e) => {
+  //   const { value, id } = e.target;
+  //   console.log("id: ", id, "data: ", value);
+  // };
+  
+  
+  let validations={vFname:false,vMname:false,vlname:false,vIname:false,vOdob:false,vCdob:false,caste:false,subcaste:false,gotra:false}
+  
+  
+  const validate=(e)=>{
+    const {id,value}=e.target;
+    console.log(id);
+    switch (id) {
+      case 'fname':
+        if(validateFname.test(value))
+       { validations={...validations,vFname:true};
+        props.onStageChange(false);}
+        else {validations.vFname=false;
+          props.onStageChange(true);
+         }
+        break;
+        case 'mname':
+        if(validateFname.test(value))
+        validations={...validations,vMname:true};
+        break;
+        case 'lname':
+        if(validateFname.test(value))
+        validations={...validations,vLname:true};
+        break;
+        case 'iname':
+        if(validateFname.test(value))
+        validations={...validations,vLname:true};
+        break;
+        case 'odob':
+        if(validateFname.test(value))
+        validations={...validations,oDob:true};
+        break;
+        case 'cdob':
+        if(validateFname.test(value))
+        validations={...validations,oCdob:true};
+        break;
+        case 'cast':
+        if(validateFname.test(value))
+        validations={...validations,caste:true};
+        break;
+        case 'subcast':
+        if(validateFname.test(value))
+        validations={...validations,subcaste:true};
+        break;
+        case 'gotra':
+        if(validateFname.test(value))
+        validations={...validations,gotra:true};
+        break;
+      default:
+        break;
+    }
+    // console.log(validateFname.test(firstName))
+  }
+  const ashramaChangeHandle=()=>{
+    
   }
   return (
     <>
       <h3>Personal Information</h3>
-      <form onSubmit={() => {}} className="form-inline">
+      
         <div className="container">
           <div className="form-group row">
             <div className="form-col col-md-3">
@@ -67,26 +94,26 @@ const PersonalInfoForm = (props) => {
                 type="text"
                 className="form-control "
                 placeholder="first name"
-                value={firstName}
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }
-              }
-              onBlur={validate}
+                defaultValue={firstName}
+                onChange={validate}
+              //   onChange={(e) => {
+              //     inputHandler(e);
+              //     saveDataHandler(e);
+              //   }
+              // }
+             // onBlur={validate}
               />
+            {/* { validations.vFname ? <alert >{fnameError}</alert>:<alert>firstName</alert>} */}
             </div>
             <div className="form-col col-md-3">
               <input
                 id="mname"
                 type="text"
+                
                 className="form-control "
                 placeholder="middle name"
                 value={middleName}
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }}
+                onChange={validate}
               />
             </div>
             <div className="form-col col-md-3">
@@ -96,10 +123,7 @@ const PersonalInfoForm = (props) => {
                 className="form-control"
                 placeholder="last name"
                 value={lastName}
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }}
+                onChange={validate}
               />
             </div>
             <div className="form-col col-md-3"></div>
@@ -110,10 +134,7 @@ const PersonalInfoForm = (props) => {
                 className="form-control"
                 value={initiatedName}
                 placeholder="Initiated Name if any"
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }}
+                onChange={validate}
               />
             </div>
           </div>
@@ -124,22 +145,24 @@ const PersonalInfoForm = (props) => {
             <div className="form-col col-md-3 ">
               <label>Original<a style={{color:'red'}}>*</a></label>
               <input
+                id='odob'
                 type="datetime-local"
                 className="form-control"
                 min="2019-01-01 0HH:0MM:0SS"
                 max="2022-12-31 0HH:0MM:0SS"
-                onChange={() => {}}
+                onChange={validate}
               />
             </div>
             <div className="form-col col-md-3">
               <label>Certificate<a style={{color:'red'}}>*</a></label>
               <input
+                id='cdob'
                 type="datetime-local"
                 className="form-control"
                 min="2019-01-01"
                 max="2022-12-31"
-                onChange={() => {}}
-              ></input>
+                onChange={validate}
+              />
             </div>
           </div>
           <div className="form-group row">
@@ -148,24 +171,27 @@ const PersonalInfoForm = (props) => {
             </div>
             <div className="form-col col-md-3">
               <input
+              id='cast'
                 type="text"
                 className="form-control"
                 placeholder="caste"
-              ></input>
+              />
             </div>
             <div className="form-col col-md-3">
               <input
+              id='subcast'
                 type="text"
                 className="form-control"
                 placeholder="sub caste"
-              ></input>
+              />
             </div>
             <div className="form-col col-md-3">
               <input
+              id='gotra'
                 type="text"
                 className="form-control"
                 placeholder="gotra"
-              ></input>
+              />
             </div>
           </div>
           <div className="form-group row">
@@ -173,20 +199,20 @@ const PersonalInfoForm = (props) => {
               <label>Ashrama<a style={{color:'red'}}>*</a></label>
             </div>
             {ashrama.map((e) => (
-              <div className={`form-col col-md-${e.col}`} key={e.id}>
+              <div className={`form-col col-md-${e.col}`} key={e.id} style={{marginRight:'30px'}}>
                 <label className="form-check-label">
-                  <input type="radio" className="form-check-input" id={e.id} />
+                  <input type="radio" className="form-check-input" id={e.id} value={e.value} onChange={ashramaChangeHandle}/>
                   {e.value}
                 </label>
               </div>
             ))}
           </div>
           <div className="form-group row">
-            <div className="form-col col-md-3">
+            <div className="form-col col-md-3" onChange={validate}>
               <label>Blood Group<a style={{color:'red'}}>*</a></label>
             </div>
             <div className="form-col col-md-3">
-              <select className="form-select">
+              <select className="form-select" onChange={validate}>
                 {bloodGroup.map((e) => (
                   <option value={e} label={e} key={e} />
                 ))}
@@ -214,7 +240,6 @@ const PersonalInfoForm = (props) => {
             </div>
           </div>
         </div>
-      </form>
     </>
   );
 };

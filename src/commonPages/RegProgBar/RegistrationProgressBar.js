@@ -89,7 +89,7 @@ const stagevals=[{id:'1',val:'Personal Detail',labelsd:label.label1},{id:'2',val
   <div className='form-col'>
   <div className="stepper-wrapper">
     {stagevals.map((e)=> 
-  <div className={`stepper-item  ${e.labelsd} `}>
+  <div className={`stepper-item  ${e.labelsd} `} key={e.id}>
     <div className="step-counter">{e.id}</div>
     <div className="step-name">{e.val}</div>
   

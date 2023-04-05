@@ -1,6 +1,6 @@
 import PersonalInfoForm from "./PersonalInfoForm";
 import ContactInfoForm from "./ContactInfoForm";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import RegistrationProgressBar from "../RegProgBar/RegistrationProgressBar";
 import "./FormInput.css";
 import DevotionalInfoForm from "./DevotionalInfoForm";
@@ -10,67 +10,18 @@ import FamilyDetails from "./FamilyDetailsForm";
 import image from "../../images/lordWithDevs.png";
 import SubmitSuccess from "../../SuccessHandler/SubmitSuccess";
 import ErrorMessage from "../../SuccessHandler/ErrorMessage";
-
+import { requiredDataAllFields } from "../../utilities/AllFieldsData";
 const FormsContainer = () => {
   const [stage, setStage] = useState(1);
   const [back, setBack] = useState(true);
   const [forward, setForward] = useState(false);
   const [submit,setSubmit] = useState('Save & Proceed');
  
-const data={
-  "devId": null,
-  "fname": 'Krishna',
-  "mname": null,
-  "lname": null,
-  "initiatedName": null,
-  "gender": null,
-  "dob": "2022-02-23",
-  "maritialStatus": null,
-  "aspiringAshram": null,
-  "bloodGroup": null,
-  "language": null,
-  "profileImgUrl": null,
-  "primaryPhone": null,
-  "whatsappPhone": null,
-  "email": null,
-  "currentAddress": null,
-  "permanentAddress": null,
-  "centerConnectedTo": null,
-  "facilitator": null,
-  "counselor": null,
-  "spiritualMaster": null,
-  "chantingRounds": "16",
-  "yearChantingSince": null,
-  "yearChanting16Rounds": null,
-  "introducedBy": null,
-  "yearOfIntroduction": null,
-  "placeIntroducedIn": null,
-  "previousCounselor": null,
-  "preferredServices": null,
-  "servicesRendered": null,
-  "remarks": null,
-  "education": null,
-  "occupation": null,
-  "presentDesignation": null,
-  "awards": null,
-  "skills": null,
-  "currentCompany": null,
-  "officeAddress": null,
-  "previousReligion": null,
-  "birthCity": null,
-  "birthState": null,
-  "motherTongue": null,
-  "fathersName": null,
-  "mothersName": null,
-  "parent": false,
-  "modified": false,
-  "stayingInHaldiaVoice": false
-}
 
 const requestData = {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
+  body: JSON.stringify(requiredDataAllFields)
 };
   
   const [submitResponse,setSubmitResponse]=useState('');
@@ -87,6 +38,14 @@ const requestData = {
 
     console.log(submitResponse);
     console.log(error);
+  }
+  const [validMandatoryFields,setValidMandatoryFields]=useState(true);
+  const moveForward=(e)=>{
+    console.log(e);
+   if(e===true)
+   setValidMandatoryFields(true);
+   else    setValidMandatoryFields(false);
+   
   }
   let forms={};
   const formStageHandler = (stage) => {
@@ -152,7 +111,7 @@ const requestData = {
     
   };
   forms={stage1: 
-    <PersonalInfoForm satge={stage} onStageChange={formStageHandler} />,stage2:<ContactInfoForm satge={stage} onStageChange={formStageHandler} />,
+    <PersonalInfoForm satge={stage} onStageChange={moveForward} />,stage2:<ContactInfoForm satge={stage} onStageChange={formStageHandler} />,
     stage3:<DevotionalInfoForm satge={stage}onStageChange={formStageHandler}/>,stage4:<AddDevotionalInfoForm
     satge={stage} onStageChange={formStageHandler}/>,stage5:<ProfessionalInfoForm satge={stage} onStageChange={formStageHandler}/>,
     sage6:<FamilyDetails satge={stage} onStageChange={formStageHandler} />
@@ -191,7 +150,7 @@ const requestData = {
           type="button"
           className="btn btn-success col-sm-3 ms-5"
           onClick={() => formStageHandler(stage + 1)}
-          disabled={forward}
+          disabled={validMandatoryFields}
         >
           {submit}
         </button>
