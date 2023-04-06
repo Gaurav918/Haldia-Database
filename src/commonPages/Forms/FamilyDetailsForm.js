@@ -1,25 +1,7 @@
+import { motherTongue,religion } from "../../utilities/OptionalEntries";
+import { useSelector,useDispatch } from "react-redux";
 const FamilyDetails = () => {
-  const religion = ["Hindu", "Jain", "Sikh", "Cristian", "Muslim", "Buddhist"];
-  const motherTongue = [
-    "Hindi",
-    "Bhojpuri",
-    "Bengali",
-    "Oriya",
-    "Gujrati",
-    "Marwari",
-    "Punjabi",
-    "Tamil",
-    "Telgu",
-    "Kannad",
-    "Malyalam",
-    "Nepali",
-    "Assamese",
-    "English",
-    "Chinese",
-    "Japanese",
-    "German",
-    "French",
-  ];
+
   return (
     <>
       <h2>Family Details</h2>

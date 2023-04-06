@@ -1,22 +1,29 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./FormInput.css";
 import { FormCheck } from "react-bootstrap";
 import { validateFname } from "../../RegexExpsValidation/RegexExps";
-import { languages,bloodGroup,ashrama } from "../../utilities/OptionalEntries";
+import { languages,bloodGroup,ashrama,gender } from "../../utilities/OptionalEntries";
 import { fnameError } from "../../utilities/ErrorMessages";
+
 
 const PersonalInfoForm = (props) => {
   const dispatch = useDispatch();
-  const { firstName, middleName, lastName, initiatedName } = useSelector(
+  const { fname, mname, lname, initiatedName } = useSelector(
     (state) => state
   );
 
-  // const inputHandler = (e) => {
-  //   const { value, id } = e.target;
-  //   dispatch({ type: id, data: value });
-  // };
+  useEffect(()=>{
+
+    return ()=>{
+
+    }
+  },[]);
+  const inputHandler = (e) => {
+    const { value, id } = e.target;
+    dispatch({ type: id, data: value });
+  };
 
   // const saveDataHandler = (e) => {
   //   const { value, id } = e.target;
@@ -76,8 +83,18 @@ const PersonalInfoForm = (props) => {
     }
     // console.log(validateFname.test(firstName))
   }
-  const ashramaChangeHandle=()=>{
+  const genderChangeHandler=(e)=>{
+
+  }
+  const ashramaChangeHandle=(e)=>{
+    document.getElementById('aspiringAshram').value=e.target.value;
+  let a=document.getElementsByName('ashramaHandle');
+  for (let index = 0; index < a.length; index++) {
     
+    if(!a[index].value==e.target.value){
+      a[index].checked=false;
+    }
+  }
   }
   return (
     <>
@@ -94,14 +111,14 @@ const PersonalInfoForm = (props) => {
                 type="text"
                 className="form-control "
                 placeholder="first name"
-                defaultValue={firstName}
+                defaultValue={fname}
                 onChange={validate}
               //   onChange={(e) => {
               //     inputHandler(e);
               //     saveDataHandler(e);
               //   }
               // }
-             // onBlur={validate}
+              onBlur={inputHandler}
               />
             {/* { validations.vFname ? <alert >{fnameError}</alert>:<alert>firstName</alert>} */}
             </div>
@@ -112,8 +129,9 @@ const PersonalInfoForm = (props) => {
                 
                 className="form-control "
                 placeholder="middle name"
-                value={middleName}
+                value={mname}
                 onChange={validate}
+                onBlur={inputHandler}
               />
             </div>
             <div className="form-col col-md-3">
@@ -122,7 +140,7 @@ const PersonalInfoForm = (props) => {
                 type="text"
                 className="form-control"
                 placeholder="last name"
-                value={lastName}
+                value={lname}
                 onChange={validate}
               />
             </div>
@@ -135,8 +153,23 @@ const PersonalInfoForm = (props) => {
                 value={initiatedName}
                 placeholder="Initiated Name if any"
                 onChange={validate}
+                onBlur={initiatedName}
               />
             </div>
+          </div>
+          <div className="form-group row">
+            <div className="form-col form-check col-md-3">
+              <label>Gender<a style={{color:'red'}}>*</a></label>
+            </div>
+            {gender.map((e) => (
+              <div className={`form-col col-md-${e.col}`} key={e.id} style={{marginRight:'30px'}}>
+                <label className="form-check-label">
+                  <input type="radio" className="form-check-input ashram" id={e.id} value={e.value} onChange={genderChangeHandler}/>
+                  {e.value}
+                </label>
+              </div>
+            ))}
+            
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3 ">
@@ -201,11 +234,12 @@ const PersonalInfoForm = (props) => {
             {ashrama.map((e) => (
               <div className={`form-col col-md-${e.col}`} key={e.id} style={{marginRight:'30px'}}>
                 <label className="form-check-label">
-                  <input type="radio" className="form-check-input" id={e.id} value={e.value} onChange={ashramaChangeHandle}/>
+                  <input type="radio" className="form-check-input" name='ashramaHandle'id={e.id} value={e.value} onClick={ashramaChangeHandle}/>
                   {e.value}
                 </label>
               </div>
             ))}
+            <input type="text" id='aspiringAshram' onChangeCapture={inputHandler} hidden/>
           </div>
           <div className="form-group row">
             <div className="form-col col-md-3" onChange={validate}>

@@ -1,6 +1,7 @@
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
 const ProfessionalInfoForm = () => {
+  const dispatch=useDispatch();
   const education = [
     "no Degree based Education",
     "Secondary School(9th-10th)",
@@ -29,6 +30,13 @@ const ProfessionalInfoForm = () => {
     ) {
       setCollapse("collapse");
     } else setCollapse("");
+
+  };
+  const inputHandler = (e) => {
+    const { value, id } = e.target;
+    console.log('id==>',id);
+    console.log('value ==>',value);
+    dispatch({ type: id, data: value });
   };
   return (
     <>
@@ -39,7 +47,7 @@ const ProfessionalInfoForm = () => {
             <label>Education<a style={{color:'red'}}>*</a></label>
           </div>
           <div className="form-col col-md-3">
-            <select className="form-select">
+            <select className="form-select" id="education" onChange={inputHandler}>
               {education.map((e) => (
                 <option value={e} label={e} />
               ))}
@@ -51,7 +59,7 @@ const ProfessionalInfoForm = () => {
             <label>Occupation<a style={{color:'red'}}>*</a></label>
           </div>
           <div className="form-col col-md-3">
-            <select className="form-select" onChange={collapseHandler}>
+            <select className="form-select" onChange={collapseHandler} id='occupation' >
               {occupation.map((e) => (
                 <option value={e.val} key={e.id} id={e.id} label={e.val} />
               ))}
@@ -63,7 +71,7 @@ const ProfessionalInfoForm = () => {
             <label>Awards/Merits</label>
           </div>
           <div className={`form-col col-md-8`}>
-            <textarea className="form-control" />
+            <textarea id='awards'className="form-control" />
           </div>
         </div>
         <div className="form-group row">

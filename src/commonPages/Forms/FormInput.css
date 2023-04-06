@@ -26,7 +26,7 @@
     height: 100vh;  
     /* background:rgba(255,255,255,0.5); */
 }
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
   .mainpage {
     width: 100%;
   }
@@ -59,7 +59,7 @@
   max-width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin-top: var(--bs-gutter-y)}
+  margin-top: var(--bs-gutter-y)} */
 /* .new-registration__control {
     display: flex;
     flex-wrap: wrap;
@@ -121,23 +121,5 @@
   width:20px;
   height: 40px;
 }  
-  @media (min-width: 220px) {
-    .new-registration__control {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-    }
   
-    .expense-item__description h2 {
-      font-size: 1.25rem;
-    }
-  
-    .new-registration__control input {
-      font-size: 1.25rem;
-      padding: 0.5rem 1.5rem;
-      
-    
-    }
-  }
   

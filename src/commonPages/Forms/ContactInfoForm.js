@@ -1,27 +1,48 @@
 import { useSelector, useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
 import "./FormInput.css";
+import { validatePhoneNo,validateEmail } from "../../RegexExpsValidation/RegexExps";
 
 const ContactInfoForm = (props) => {
   const dispatch = useDispatch();
-  const { firstName, middleName, lastName, initiatedName } = useSelector(
-    (state) => state
-  );
+  // const { firstName, middleName, lastName, initiatedName } = useSelector(
+  //   (state) => state
+  // );
 
   const inputHandler = (e) => {
     const { value, id } = e.target;
     dispatch({ type: id, data: value });
   };
 
-  const saveDataHandler = (e) => {
-    const { value, id } = e.target;
-    console.log("id: ", id, "data: ", value);
-  };
-
+  const validate=(e)=>{
+    const {id,value}=e.target;
+    console.log(id);
+    switch (id) {
+      case 'pno':
+        if(validatePhoneNo.test(value)){
+            console.log(validatePhoneNo.test(value));
+        }
+        else console.log(validatePhoneNo.test(value));
+        break;
+        case 'Altno':
+        if(validatePhoneNo.test(value)){
+            console.log(validatePhoneNo.test(value));
+        }
+        else console.log(validatePhoneNo.test(value));
+        break;
+        case 'email':
+        if(validateEmail.test(value)){
+            console.log(validateEmail.test(value));
+        }
+        else console.log(validateEmail.test(value));
+        break;
+        default:
+        break;
+    }}
   return (
     <>
       <h3>Contact Details</h3>
-      <form onSubmit={() => {}}>
+      
         <div className="container">
           <div className="form-group row">
             <div className="form-col col-md-3">
@@ -29,15 +50,14 @@ const ContactInfoForm = (props) => {
             </div>
             <div className="form-col col-md-4">
               <input
-                id="pno"
+                
                 type="number"
+                id="pno"
                 className="form-control"
                 placeholder="Always Reachable"
                 maxLength={10}
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }}
+                onChange={validate}
+                onBlur={inputHandler}
               />
             </div>
             <div className="form-col col-md-4">
@@ -45,12 +65,10 @@ const ContactInfoForm = (props) => {
                 id="Altno"
                 className="form-control"
                 type="number"
-                placeholder="Alternate No."
+                placeholder="Alternate/whatsapp No."
                 maxLength={10}
-                onChange={(e) => {
-                  inputHandler(e);
-                  saveDataHandler(e);
-                }}
+                onChange={validate}
+                onBlur={inputHandler}
               />
             </div>
             <div className="form-group row">
@@ -59,10 +77,14 @@ const ContactInfoForm = (props) => {
               </div>
               <div className="form-col col-md-4">
                 <input
+                id='email'
                   className="form-control"
                   type="email"
                   placeholder="xyz@gmail.com"
+                  onChange={validate}
+                  onBlur={inputHandler}
                 />
+                
               </div>
             </div>
             <div className="form-group row">
@@ -75,10 +97,12 @@ const ContactInfoForm = (props) => {
 
               <div className="form-col col-md-3">
                 <input
+                  id='currAddLine1'
                   type="text"
                   className="form-control"
                   style={{ width: "400px" }}
-                  id="currAdd"
+                  
+                  onBlur={inputHandler}
                 />
               </div>
             </div>
@@ -89,7 +113,8 @@ const ContactInfoForm = (props) => {
                   type="text"
                   className="form-control"
                   style={{ width: "400px" }}
-                  id=""
+                  id='currAddLine2'
+                  onBlur={inputHandler}
                 />
               </div>
             </div>
@@ -99,8 +124,10 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id="currAdd"
+                  id="currAddCity"
                   placeholder="city"
+                  onChange={validate}
+                  onBlur={inputHandler}
                 />
               </div>
 
@@ -108,7 +135,7 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id=""
+                  id="currAddState"
                   placeholder="State"
                 />
               </div>
@@ -119,7 +146,7 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id="currAdd"
+                  id="currAddZip"
                   placeholder="ZipCode"
                 />
               </div>
@@ -128,7 +155,7 @@ const ContactInfoForm = (props) => {
                 <input
                   className="form-control"
                   type="text"
-                  id=""
+                  id="currAddCountry"
                   placeholder="Country"
                 />
               </div>
@@ -157,7 +184,7 @@ const ContactInfoForm = (props) => {
                   type="text"
                   className="form-control"
                   style={{ width: "400px" }}
-                  id="currAdd"
+                  id="perAddLine1"
                 />
               </div>
             </div>
@@ -168,7 +195,7 @@ const ContactInfoForm = (props) => {
                   type="text"
                   className="form-control"
                   style={{ width: "400px" }}
-                  id=""
+                  id="perAddLine2"
                 />
               </div>
             </div>
@@ -178,7 +205,7 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id="currAdd"
+                  id="perAddCity"
                   placeholder="city"
                 />
               </div>
@@ -187,7 +214,7 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id=""
+                  id="perAddState"
                   placeholder="State"
                 />
               </div>
@@ -198,7 +225,7 @@ const ContactInfoForm = (props) => {
                 <input
                   type="text"
                   className="form-control"
-                  id="currAdd"
+                  id="perAddZip"
                   placeholder="ZipCode"
                 />
               </div>
@@ -214,7 +241,6 @@ const ContactInfoForm = (props) => {
             </div>
           </div>
         </div>
-      </form>
     </>
   );
 };
